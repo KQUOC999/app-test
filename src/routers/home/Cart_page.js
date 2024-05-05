@@ -248,7 +248,6 @@ const handleReduceProduct = async (productId) => {
       //Gọi lại API giỏ hàng để lấy dữ liệu làm mới từ server
       fetchData();
       fetchData1();
-      window.location.reload();
       console.log(response);
 
       // Xử lý response từ server (nếu cần)
