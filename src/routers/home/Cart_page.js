@@ -278,9 +278,6 @@ const handleReduceProduct = async (productId) => {
 
   return (
     <div className="cart-page">
-      <Link to={"/orderingInformation"}>
-        <button className='btn_open_ordering_page'>Đơn hàng</button>
-      </Link>
       <div className='containers'>
         {loading ? (
           <p>Đang tải sản phẩm...</p>
@@ -316,6 +313,9 @@ const handleReduceProduct = async (productId) => {
               <p>Tổng thanh toán: ${total}</p>
               <button type="submit" onSubmit={handleFormSubmit}>Thanh toán</button>
             </form>
+            <Link to={"/orderingInformation"}>
+            <button className='btn_open_ordering_page'>Đơn hàng</button>
+            </Link>
           </>
         )}
       </div>
