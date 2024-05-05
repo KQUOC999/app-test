@@ -11,3 +11,161 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  width: 350px;
+  height: auto;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-form {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.custom-form .form-group {
+  margin-bottom: 20px;
+}
+
+.custom-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="password"],
+.custom-form input[type="email"] {
+  width: calc(100% - 22px); /* Sử dụng toàn bộ độ rộng của phần tử cha, trừ đi padding và border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; /* Bo tròn các góc */
+  border: 1px solid #ccc; /* Đường viền mảnh */
+}
+
+.custom-form button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition-duration: 0.4s; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.custom-form button[type="submit"]:hover {
+  background-color: #0056b3; /* Màu nền khi hover */
+}
+
+.custom-form .result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.overlay-container {
+  position: fixed; /* Đặt vị trí cố định */
+  top: 0; /* Cố định container ở phía trên cùng của màn hình */
+  left: 0; /* Cố định container ở phía trái của màn hình */
+  width: 100%; /* Đặt chiều rộng của container bằng 100% chiều rộng của màn hình */
+  height: 100%; /* Đặt chiều cao của container bằng 100% chiều cao của màn hình */
+  background-color: #c8cdd1; /* Màu nền của container với độ mờ là 50% */
+  z-index: 999; /* Đặt z-index cao hơn để container hiển thị trên các phần tử khác */
+  display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+  align-items: center; /* Căn chỉnh nội dung theo trục dọc */
+  justify-content: center; /* Căn chỉnh nội dung theo trục ngang */
+}
+
+.overlay-content {
+  background-color: #fff; /* Màu nền của nội dung container */
+  padding: 20px; /* Khoảng cách giữa nội dung và viền container */
+  border-radius: 10px; /* Bo tròn các góc của container */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6); /* Hiệu ứng bóng đổ ở cạnh dưới và bên phải */
+}
+
+
+/* CSS cho container sản phẩm */
+/* CSS cho container sản phẩm */
+.product ul{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cột */
+  grid-auto-rows: auto; /* Chiều cao tự động */
+  gap: 25px; /* Khoảng cách giữa các sản phẩm */
+}
+
+/* CSS cho mỗi sản phẩm */
+.product li {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+  list-style-type: none;
+}
+
+/* CSS cho hình ảnh sản phẩm */
+.product ul li img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* CSS cho tiêu đề sản phẩm */
+.product ul li h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* CSS cho thông tin sản phẩm */
+.product ul li p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.add-to-cart-btn {
+  background-color: #4CAF50; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Kích thước nút */
+  border: none; /* Không có viền */
+  border-radius: 5px; /* Bo góc */
+  cursor: pointer; /* Con trỏ chuột thành bàn tay khi di chuột qua */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+.add-to-cart-btn:hover {
+  background-color: #45a049; /* Màu nền khi di chuột qua */
+}
+
+.cart-icon {
+  position: fixed; /* Đặt vị trí cố định */
+  top: 20px; /* Khoảng cách từ đỉnh của trang */
+  right: 20px; /* Khoảng cách từ phải của trang */
+  display: flex; /* Hiển thị biểu tượng và số lượng trên cùng một hàng */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  background-color: #ffffff; /* Màu nền */
+  border-radius: 50%; /* Bo góc */
+  width: 50px; /* Chiều rộng */
+  height: 50px; /* Chiều cao */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiển thị bóng */
+}
+
+.cart-icon img {
+  width: 30px; /* Chiều rộng của biểu tượng giỏ hàng */
+  height: 30px; /* Chiều cao của biểu tượng giỏ hàng */
+}
+
+.cart-count {
+  background-color: #ff0000; /* Màu nền của số lượng */
+  color: #ffffff; /* Màu chữ của số lượng */
+  border-radius: 50%; /* Bo góc */
+  font-size: 12px; /* Kích thước chữ */
+  padding: 5px; /* Khoảng cách bên trong số lượng */
+  margin-left: 5px; /* Khoảng cách giữa biểu tượng và số lượng */
+}
