@@ -291,7 +291,7 @@ const OnSum = async (form) =>{
       ) : (
       <div className="overlay-container">
         <div className="overlay-content">
-          <div className='container'>
+          <div className='container_form'>
           {!showRegisterForm ? (
             <>
               <button className="button" onClick={() =>
