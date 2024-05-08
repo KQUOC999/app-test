@@ -294,7 +294,7 @@ const OnSum = async (form) =>{
           <div className='container_form'>
           {!showRegisterForm ? (
             <>
-              <button className="button" onClick={() =>
+              <button className="button1" onClick={() =>
                 setShowRegisterForm(true)}>Đăng ký</button>
 
               <Form
@@ -306,7 +306,7 @@ const OnSum = async (form) =>{
             </>
           ) : (
               <>
-                <button className="button" onClick={() => 
+                <button className="button1" onClick={() => 
                   setShowRegisterForm(false)}>Quay lại</button>
                 <Form
                   className="custom-form"

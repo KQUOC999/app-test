@@ -37,12 +37,29 @@ html, body {
   padding: 20px;
   border-radius: 10px;
   width: 80%; /* Độ rộng của nội dung form */
-  max-width: 400px; /* Độ rộng tối đa */
+  max-width: 350px; /* Độ rộng tối đa */
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6); /* Hiệu ứng bóng đổ ở cạnh dưới và bên phải */
 }
 
-.container_form {
-  text-align: center;
+
+.custom-form input[type="text"],
+.custom-form input[type="password"],
+.custom-form input[type="email"] {
+  width: calc(100% - 22px); /* Sử dụng toàn bộ độ rộng của phần tử cha, trừ đi padding và border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; /* Bo tròn các góc */
+  border: 1px solid #ccc; /* Đường viền mảnh */
+}
+
+.button1 {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .button {
