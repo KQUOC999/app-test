@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Realm from 'realm-web';
 import './cart_page.css';
+import { Link } from 'react-router-dom';
 
 const app = new Realm.App({ id: process.env.REACT_APP_REALM_ID });
 
@@ -88,6 +89,10 @@ const OrderingInfoPage = () => {
           </>
         )}
       </div>
+
+      <Link to={"/MyForm"}>
+        <button className='btn_open_myform'>Mở Form</button>
+      </Link>
     </div>
   );
 };

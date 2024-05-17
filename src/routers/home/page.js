@@ -62,7 +62,8 @@ const Home = () => {
   //
 
   useEffect(() => {
-    fetchData()
+    fetchData();
+    
   },[])
 
   const fetchData = async() =>{
