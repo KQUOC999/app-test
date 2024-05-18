@@ -39,7 +39,7 @@ const MyForm = () => {
     const updateBasicSalary = useCallback((part) => {
         let basicSalary = 0;
         switch (part) {
-            case "Teaching Department":
+            case "Teaching Department": 
                 basicSalary = 5000;
                 break;
             case "Technical Department":
@@ -222,7 +222,7 @@ const MyForm = () => {
             // Kiểm tra xem response có phải là một mảng không
             if (Array.isArray(response) && response.length > 0) {
                 // Lấy giá trị từ phản hồi
-                const TotalsalarywithouttaxArray        = response.map(res => res.public?.output?.calculation?.["Total salary without tax"]);
+                const TotalsalarywithouttaxArray        = response.map(res => res.public?.output?.calculation?.["Total_salary_without_tax"]);
                 const PersonalIncomeTaxArray            = response.map(res => res.public?.output?.calculation?.["Thuế_thu_nhập_cá_nhân"]);
                 const LOANArray                         = response.map(res => res.public?.output?.calculation?.["LOAN_Tiền_ứng_trước"]);
                 const ExpenseReimbursementArray         = response.map(res => res.public?.output?.calculation?.["Khấu_trừ"]);
