@@ -286,7 +286,7 @@ const OnSum = async (form) =>{
               ))}
             </ul>
           </div>
-        )};
+        )}
     </div>
 
       ) : (
