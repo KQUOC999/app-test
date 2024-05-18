@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "/app-test/static/css/main.a51ddb65.css",
-    "main.js": "/app-test/static/js/main.bf75b8ec.js",
+    "main.js": "/app-test/static/js/main.12bee58c.js",
     "static/js/606.546d10d1.chunk.js": "/app-test/static/js/606.546d10d1.chunk.js",
     "static/css/501.9bb725b2.chunk.css": "/app-test/static/css/501.9bb725b2.chunk.css",
     "static/js/501.76bf3362.chunk.js": "/app-test/static/js/501.76bf3362.chunk.js",
     "static/css/584.9bb725b2.chunk.css": "/app-test/static/css/584.9bb725b2.chunk.css",
     "static/js/584.eec5c170.chunk.js": "/app-test/static/js/584.eec5c170.chunk.js",
-    "static/js/243.72dc47e0.chunk.js": "/app-test/static/js/243.72dc47e0.chunk.js",
+    "static/js/243.f97a59a9.chunk.js": "/app-test/static/js/243.f97a59a9.chunk.js",
     "static/js/402.c8c87e61.chunk.js": "/app-test/static/js/402.c8c87e61.chunk.js",
     "static/js/718.74e89545.chunk.js": "/app-test/static/js/718.74e89545.chunk.js",
     "index.html": "/app-test/index.html",
     "main.a51ddb65.css.map": "/app-test/static/css/main.a51ddb65.css.map",
-    "main.bf75b8ec.js.map": "/app-test/static/js/main.bf75b8ec.js.map",
+    "main.12bee58c.js.map": "/app-test/static/js/main.12bee58c.js.map",
     "606.546d10d1.chunk.js.map": "/app-test/static/js/606.546d10d1.chunk.js.map",
     "501.9bb725b2.chunk.css.map": "/app-test/static/css/501.9bb725b2.chunk.css.map",
     "501.76bf3362.chunk.js.map": "/app-test/static/js/501.76bf3362.chunk.js.map",
     "584.9bb725b2.chunk.css.map": "/app-test/static/css/584.9bb725b2.chunk.css.map",
     "584.eec5c170.chunk.js.map": "/app-test/static/js/584.eec5c170.chunk.js.map",
-    "243.72dc47e0.chunk.js.map": "/app-test/static/js/243.72dc47e0.chunk.js.map",
+    "243.f97a59a9.chunk.js.map": "/app-test/static/js/243.f97a59a9.chunk.js.map",
     "402.c8c87e61.chunk.js.map": "/app-test/static/js/402.c8c87e61.chunk.js.map",
     "718.74e89545.chunk.js.map": "/app-test/static/js/718.74e89545.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a51ddb65.css",
-    "static/js/main.bf75b8ec.js"
+    "static/js/main.12bee58c.js"
   ]
 }
