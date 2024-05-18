@@ -51,6 +51,83 @@ html, body {
 }
 
 
+.custom-form input[type="text"],
+.custom-form input[type="password"],
+.custom-form input[type="email"] {
+  width: calc(100% - 22px); /* Sử dụng toàn bộ độ rộng của phần tử cha, trừ đi padding và border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px; /* Bo tròn các góc */
+  border: 1px solid #ccc; /* Đường viền mảnh */
+}
+
+.button1 {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.custom-form {
+  width: 100%;
+}
+
+.custom-form .form-group {
+  margin-bottom: 20px;
+}
+
+.custom-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="password"],
+.custom-form input[type="email"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.custom-form button[type="submit"] {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.custom-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.custom-form .result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
 /* CSS cho container sản phẩm */
 /* CSS cho container sản phẩm */
 .product ul{
