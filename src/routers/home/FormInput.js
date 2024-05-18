@@ -194,7 +194,6 @@ const MyForm = () => {
             
             //Gửi đối tượng về server
             const sendData = await app.currentUser.callFunction("receivedData", dataTotalToSend);
-            console.log(sendData);
 
             //code trả về kết quả tính toán đưa vào form output:
             const calculatedResult = await calculateNetSalary(form.formData);
@@ -202,6 +201,8 @@ const MyForm = () => {
 
             // Cập nhật kết quả
             fetchDataNetSalaryModule();
+
+            return sendData;
 
             } else {
                 console.error('Form data is missing or invalid.');
@@ -225,7 +226,11 @@ const MyForm = () => {
                 const PersonalIncomeTaxArray            = response.map(res => res.public?.output?.calculation?.["Thuế_thu_nhập_cá_nhân"]);
                 const LOANArray                         = response.map(res => res.public?.output?.calculation?.["LOAN_Tiền_ứng_trước"]);
                 const ExpenseReimbursementArray         = response.map(res => res.public?.output?.calculation?.["Khấu_trừ"]);
-                const InsuranceSalaryArray              = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]);
+                const InsuranceSalaryArray              = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.["Lương_đóng_bảo_hiểm"]);
+                const SocialInsuranceArray              = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.BHXH);
+                const AccidentInsuranceArray            = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.BHTN);
+                const HealthInsuranceArray              = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.BHYT);
+                const InsuranceArray                    = response.map(res => res.public?.output?.calculation?.["BẢO HIỂM"]);
 
                 // Cập nhật giá trị mới nhất từ phản hồi
                 const latestTotalsalarywithouttaxArray  = TotalsalarywithouttaxArray[TotalsalarywithouttaxArray.length - 1];
@@ -233,19 +238,31 @@ const MyForm = () => {
                 const latestLOANArray                   = LOANArray[LOANArray.length - 1];
                 const latestExpenseReimbursementArray   = ExpenseReimbursementArray[ExpenseReimbursementArray.length - 1];
                 const latestInsuranceSalaryArray        = InsuranceSalaryArray[InsuranceSalaryArray.length - 1];
+                const latestSocialInsuranceArray        = SocialInsuranceArray[SocialInsuranceArray.length - 1];
+                const latestAccidentInsuranceArray      = AccidentInsuranceArray[AccidentInsuranceArray.length - 1];
+                const latestHealthInsuranceArray        = HealthInsuranceArray[HealthInsuranceArray.length - 1];
+                const latestInsuranceArray              = InsuranceArray[InsuranceArray.length - 1];
 
                 if (latestTotalsalarywithouttaxArray    !== undefined || 
                     latestPersonalIncomeTaxArray        !== undefined || 
                     latestLOANArray                     !== undefined ||
                     latestExpenseReimbursementArray     !== undefined ||
-                    latestInsuranceSalaryArray          !== undefined) {
+                    latestInsuranceSalaryArray          !== undefined ||
+                    latestSocialInsuranceArray          !== undefined ||
+                    latestAccidentInsuranceArray        !== undefined ||
+                    latestHealthInsuranceArray          !== undefined ||
+                    latestInsuranceArray                !== undefined) {
 
                     // Thêm giá trị abc vào mảng state
-                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestTotalsalarywithouttaxArray] : [latestTotalsalarywithouttaxArray]);
-                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestPersonalIncomeTaxArray] : [latestPersonalIncomeTaxArray]);
-                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestLOANArray] : [latestLOANArray]);
-                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestExpenseReimbursementArray] : [latestExpenseReimbursementArray]);
-                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestInsuranceSalaryArray] : [latestInsuranceSalaryArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestTotalsalarywithouttaxArray]   : [latestTotalsalarywithouttaxArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestPersonalIncomeTaxArray]       : [latestPersonalIncomeTaxArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestLOANArray]                    : [latestLOANArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestExpenseReimbursementArray]    : [latestExpenseReimbursementArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestInsuranceSalaryArray]         : [latestInsuranceSalaryArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestSocialInsuranceArray]         : [latestSocialInsuranceArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestAccidentInsuranceArray]       : [latestAccidentInsuranceArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestHealthInsuranceArray]         : [latestHealthInsuranceArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestInsuranceArray]               : [latestInsuranceArray]);
 
                 // Tạo form output để hiện thị kết quả
                     const outputCalculation = {
@@ -261,8 +278,14 @@ const MyForm = () => {
                         "EXPENSE REIMBURSEMENT - KHẤU TRỪ": {
                             "Expense": latestExpenseReimbursementArray
                         },
+                        "Lương đóng bảo hiểm": {
+                            "BHXH": latestSocialInsuranceArray,
+                            "BHTN": latestAccidentInsuranceArray,
+                            "BHYT": latestHealthInsuranceArray,
+                            "Lương_đóng_bảo_hiểm": latestInsuranceSalaryArray
+                        },
                         "BẢO HIỂM": {
-                            "Thành_tiền_BH": latestInsuranceSalaryArray
+                            "Thành_tiền_BH": latestInsuranceArray
                         }
                     };
 

@@ -52,11 +52,11 @@ const CartPage = () => {
         // Kiểm tra và loại bỏ các thuộc tính circular structure
     const productWithoutCircular = removeCircular(result);
 
-// Trả về thông tin chi tiết của sản phẩm
-return productWithoutCircular;
+    // Trả về thông tin chi tiết của sản phẩm
+    return productWithoutCircular;
   } catch (error) {
-  console.error('Lỗi khi lấy thông tin sản phẩm:', error);
-  throw error;
+      console.error('Lỗi khi lấy thông tin sản phẩm:', error);
+      throw error;
   }
   };
 
@@ -71,12 +71,12 @@ const getProductDetails_Add = async (productId) => {
         // Kiểm tra và loại bỏ các thuộc tính circular structure
     const productWithoutCircular = removeCircular(result);
 
-// Trả về thông tin chi tiết của sản phẩm
-return productWithoutCircular;
+    // Trả về thông tin chi tiết của sản phẩm
+    return productWithoutCircular;
   } catch (error) {
   console.error('Lỗi khi lấy thông tin sản phẩm:', error);
-  throw error;
-  }
+      throw error;
+    }
   };
 // Hàm loại bỏ circular structure
 const removeCircular = (obj) => {
@@ -124,8 +124,8 @@ const handleReduceProduct = async (productId) => {
               return updatedProducts;
           });
 
-          console.log(product.productCounts);
-          console.log(productId);
+          //console.log(product.productCounts);
+          //console.log(productId);
       }
       fetchData1();
       return product;
@@ -169,8 +169,8 @@ const handleReduceProduct = async (productId) => {
               return updatedProducts;
             });
 
-          console.log(product.productCounts);
-          console.log(productId);
+          //console.log(product.productCounts);
+          //console.log(productId);
         }
         fetchData1();
         return product;
@@ -188,7 +188,7 @@ const handleReduceProduct = async (productId) => {
     try {
       // Gọi hàm của Realm Function để cập nhật số lượng mua sản phẩm trên máy chủ
       await app.currentUser.callFunction(functionName, args);
-      console.log("Đã cập nhật số lượng mua sản phẩm trên máy chủ.");
+      //console.log("Đã cập nhật số lượng mua sản phẩm trên máy chủ.");
     } catch (error) {
       console.log("Lỗi khi gọi API cập nhật số lượng mua sản phẩm:", error);
       // Ném lỗi nếu không tìm thấy sản phẩm với ID đã cho
@@ -248,8 +248,9 @@ const handleReduceProduct = async (productId) => {
       //Gọi lại API giỏ hàng để lấy dữ liệu làm mới từ server
       fetchData();
       fetchData1();
-      console.log(response);
+      //console.log(response);
 
+      return response
       // Xử lý response từ server (nếu cần)
       
 
@@ -269,7 +270,7 @@ const handleReduceProduct = async (productId) => {
     try {
       const res = await user.callFunction(functionName);
       setTotalPay(res?.public?.output?.total.toFixed(2));   
-      console.log(res);
+      
     } catch (error) {
       console.log(error.error);
     }

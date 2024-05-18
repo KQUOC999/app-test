@@ -44,12 +44,9 @@ const Sum = {
 ////////////////////////////////////////////////////////////////////////////
 // async
 const Home = () => {
-  const [Sum, SetSum] = useState({});
-  const [total, setTotal] = useState();
 
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
-  //
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,31 +55,12 @@ const Home = () => {
 
   const [ , setProductCounts] = useState({});
   const [ , setProducttotalPay] = useState({});
-  
-  //
 
   useEffect(() => {
     fetchData();
-    
-  },[])
-
-  const fetchData = async() =>{
-    const functionName = "module"
-    try {
-      const res = await user.callFunction(functionName)
-      SetSum(res[0]?.public?.input?.jsonSchema)
-      console.log(res)
-
-    } catch (error) {
-      console.log(error.error)  
-    }
-  }
-
-  useEffect(() => {
-    fetchData1();
   }, [])
 
-  const fetchData1 = async () => {
+  const fetchData = async () => {
     try {
       const functionName = "getAllProducts";
       const result = await app.currentUser.callFunction(functionName);
@@ -102,10 +80,6 @@ const Home = () => {
       if (!product) {
         throw new Error("Không tìm thấy thông tin sản phẩm.");
       }
-  
-      // Tiến hành các hành động liên quan đến giỏ hàng với thông tin sản phẩm đã lấy được
-      console.log('Thông tin sản phẩm...:', product);
-  
       // Cập nhật giỏ hàng
       setCartCount(cartCount + 1);
       setCartItems([...cartItems, { id: product._id, productName: product.productName }]);
@@ -172,7 +146,6 @@ const removeCircular = (obj) => {
     try {
 
       await app.emailPasswordAuth.registerUser({email, password});
-      console.log("Đăng ký thành công")
       window.location.reload(true)
 
     } catch (error) {
@@ -190,12 +163,10 @@ const removeCircular = (obj) => {
         const credentials = Realm.Credentials.emailPassword(email, password);
         // Authenticate the user
         await app.logIn(credentials);
-        console.log("Đăng nhập thành công:");
         window.location.reload(true)
   
       } catch (error) {
         console.log(error.error)
-        window.alert("Sai thông tin đăng nhập!")
 
       }
   }
@@ -206,7 +177,6 @@ const removeCircular = (obj) => {
     try {
       // Authenticate the user
       await user.logOut();
-      console.log("Đăng xuất thành công:");
       window.location.reload(true)
 
     } catch (error) {
@@ -214,34 +184,7 @@ const removeCircular = (obj) => {
     }
 }
 
-//GetValue
-const GetValue = async () =>{
-  const functionName = "get";
 
-  try {
-    const result = await user.callFunction(functionName);
-    console.log(result)
-
-  } catch (error) {
-    console.log(error.error)
-  }
-}
-
-//Sum
-const OnSum = async (form) =>{
-  const functionName = "SUMAB";
-  const args = [form?.formData, user.id]
-
-  try {
-    const res = await user.callFunction(functionName, ...args);
-    setTotal(res[0]?.public?.output?.total)
-    console.log(res[0]?.public?.output?.total)
-    console.log(res)
-
-  } catch (error) {
-    console.log(error.error)
-  }
-}
 ///////////////////////////////////////////////////////////////////////////////////
   //Return Result
   return (
@@ -250,15 +193,6 @@ const OnSum = async (form) =>{
         
       <div>home
         <button className="btn_button" onClick={logOut}>Đăng xuất</button>
-        <button className="btn_button" onClick={GetValue}>Gọi Function</button>
-
-        <Form 
-          schema={Sum}
-          validator={validator}
-          onSubmit={OnSum}
-        />
-       
-        <p>Kết quả là: {total}</p>
       
         {/* Kiểm tra isLoading để xem liệu dữ liệu sản phẩm đang được tải hay không */}
         {loading ? (
