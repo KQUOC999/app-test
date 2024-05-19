@@ -40,28 +40,28 @@ const MyForm = () => {
         let basicSalary = 0;
         switch (part) {
             case "Teaching Department": 
-                basicSalary = 5000;
+                basicSalary = 8000000;
                 break;
             case "Technical Department":
-                basicSalary = 6000;
+                basicSalary = 9000000;
                 break;
             case "HR Department":
-                basicSalary = 7000;
+                basicSalary = 10000000;
                 break;
             case "Production Department":
-                basicSalary = 8000;
+                basicSalary = 11000000;
                 break;
             case "Supervision Department":
-                basicSalary = 9000;
+                basicSalary = 15000000;
                 break;
             case "R&D":
-                basicSalary = 10000;
+                basicSalary = 20000000;
                 break;
             case "CFO":
-                basicSalary = 11000;
+                basicSalary = 30000000;
                 break;
             case "CEO":
-                basicSalary = 12000;
+                basicSalary = 40000000;
                 break;
             default:
                 basicSalary = 0;
@@ -231,6 +231,7 @@ const MyForm = () => {
                 const AccidentInsuranceArray            = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.BHTN);
                 const HealthInsuranceArray              = response.map(res => res.public?.output?.calculation?.["Lương_đóng_bảo_hiểm"]?.BHYT);
                 const InsuranceArray                    = response.map(res => res.public?.output?.calculation?.["BẢO HIỂM"]);
+                const NetsalaryArray                    = response.map(res => res.public?.output?.calculation?.["Lương_thực_lãnh"]);
 
                 // Cập nhật giá trị mới nhất từ phản hồi
                 const latestTotalsalarywithouttaxArray  = TotalsalarywithouttaxArray[TotalsalarywithouttaxArray.length - 1];
@@ -242,6 +243,7 @@ const MyForm = () => {
                 const latestAccidentInsuranceArray      = AccidentInsuranceArray[AccidentInsuranceArray.length - 1];
                 const latestHealthInsuranceArray        = HealthInsuranceArray[HealthInsuranceArray.length - 1];
                 const latestInsuranceArray              = InsuranceArray[InsuranceArray.length - 1];
+                const latestNetsalaryArray              = NetsalaryArray[NetsalaryArray.length - 1];
 
                 if (latestTotalsalarywithouttaxArray    !== undefined || 
                     latestPersonalIncomeTaxArray        !== undefined || 
@@ -251,7 +253,8 @@ const MyForm = () => {
                     latestSocialInsuranceArray          !== undefined ||
                     latestAccidentInsuranceArray        !== undefined ||
                     latestHealthInsuranceArray          !== undefined ||
-                    latestInsuranceArray                !== undefined) {
+                    latestInsuranceArray                !== undefined ||
+                    latestNetsalaryArray                !== undefined) {
 
                     // Thêm giá trị abc vào mảng state
                     setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestTotalsalarywithouttaxArray]   : [latestTotalsalarywithouttaxArray]);
@@ -263,6 +266,7 @@ const MyForm = () => {
                     setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestAccidentInsuranceArray]       : [latestAccidentInsuranceArray]);
                     setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestHealthInsuranceArray]         : [latestHealthInsuranceArray]);
                     setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestInsuranceArray]               : [latestInsuranceArray]);
+                    setResponseArray(prevArray => Array.isArray(prevArray) ? [...prevArray, latestNetsalaryArray]               : [latestNetsalaryArray])
 
                 // Tạo form output để hiện thị kết quả
                     const outputCalculation = {
@@ -286,7 +290,8 @@ const MyForm = () => {
                         },
                         "BẢO HIỂM": {
                             "Thành_tiền_BH": latestInsuranceArray
-                        }
+                        },
+                        "LƯƠNG THỰC LÃNH": latestNetsalaryArray
                     };
 
                 // Trả về kết quả tính toán
@@ -342,8 +347,6 @@ const MyForm = () => {
                         <div>Không có jsonSchemaCalculateNetSalaryOutput</div>
                     )}
 
-                    <p>Kết quả là: </p>
-                        
                 </div>
                 </>
             )}
