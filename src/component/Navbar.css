@@ -1,0 +1,52 @@
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  width: 100vw; /* Độ rộng của thanh navbar sẽ là 100% của phần tử cha */
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Canh giữa các thành phần trong navbar */
+}
+
+.navbar-item {
+  padding: 14px 1vw; /* Sử dụng đơn vị vw để tự động điều chỉnh padding tương ứng với chiều rộng của màn hình */
+  margin: 0 2vw; /* Thêm margin ở cả hai bên */
+}
+
+.navbar-link {
+  color: white;
+  text-align: center;
+  padding: 14px 1vw; /* Sử dụng đơn vị vw để tự động điều chỉnh padding tương ứng với chiều rộng của màn hình */
+  text-decoration: none;
+  display: block;
+}
+
+.btn_button {
+  border: none;
+  background-color: transparent; /* Màu nền trong suốt */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar-link:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+  color: black;
+}
+
+.btn_button:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+  color: black;
+}
+
+.navbar-link.active {
+  background-color: #4CAF50;
+  color: white;
+}

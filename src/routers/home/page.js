@@ -57,7 +57,9 @@ const Home = () => {
   const [ , setProducttotalPay] = useState({});
 
   useEffect(() => {
+    if (user) {
     fetchData();
+    }
   }, [])
 
   const fetchData = async () => {
@@ -171,18 +173,6 @@ const removeCircular = (obj) => {
       }
   }
 
-   //LogOut
-   const logOut = async () =>{
-
-    try {
-      // Authenticate the user
-      await user.logOut();
-      window.location.reload(true)
-
-    } catch (error) {
-      console.log(error.error)
-    }
-}
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -191,8 +181,8 @@ const removeCircular = (obj) => {
     <div>
       {user? (
         
-      <div>home
-        <button className="btn_button" onClick={logOut}>Đăng xuất</button>
+      <div>
+
       
         {/* Kiểm tra isLoading để xem liệu dữ liệu sản phẩm đang được tải hay không */}
         {loading ? (
@@ -251,9 +241,9 @@ const removeCircular = (obj) => {
                 />
               </>
             )}
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
       )}
       
     </div>  
