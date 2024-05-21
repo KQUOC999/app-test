@@ -30,11 +30,10 @@ const loginSchema = {
 };
 
 const Logout = () => {
-
+  const [ , setUser] = useState(null);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [loading, setLoading] = useState(true);
-
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Thêm state mới để kiểm tra trạng thái đăng nhập
 
 
   useEffect(() => {
@@ -42,7 +41,9 @@ const Logout = () => {
         try {
           // Authenticate the user
           if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
-            logout();
+            await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
+            setIsLoggedIn(false)
+            window.location.reload(true)
           }
         } catch (error) {
           console.log(error.error);
@@ -55,56 +56,37 @@ const Logout = () => {
       
   }, []); // Thêm logOut vào danh sách dependency của useEffect
 
-  const logout = async () => {
-    if (user) {
-      try {
-        await user.logOut();
-        window.location.reload(true)
-      } catch (error) {
-        console.error('Error logging out:', error);
-      }
+  const register = async (form) => {
+    const { email, password } = form.formData;
+    try {
+      await app.emailPasswordAuth.registerUser({ email, password });
+      window.location.reload(true);
+    } catch (error) {
+      console.log(error.error);
     }
   };
-//Register
-const register = async (form) =>{
 
-  const {email, password} = form?.formData
-
-  try {
-
-    await app.emailPasswordAuth.registerUser({email, password});
-    window.location.reload(true)
-
-  } catch (error) {
-    console.log(error.error)
-  }
-}
-
-
-  const login = async (form) =>{
-
-    const {email, password} = form?.formData
-
+  const login = async (form) => {
+    const { email, password } = form.formData;
     try {
-      // Create an API Key credential
       const credentials = Realm.Credentials.emailPassword(email, password);
-      // Authenticate the user
-      await app.logIn(credentials);
+      const loggedInUser = await app.logIn(credentials);
       setLoading(false);
+      setUser(loggedInUser);
+      setIsLoggedIn(true); // Đã đăng nhập thành công
+      window.location.reload(true);
       window.location.href = '/app-test';
-  
-
+    
     } catch (error) {
-      console.log(error.error)
-
+      console.log(error.error);
     }
-}
+  };
 
   return (
     <div>
       {user ? (
         <>
-          {loading ? <p>Loading...</p> : <Home />}
+          {isLoggedIn && loading ? <p>Loading...</p> : <Home />}
         </>
       ) : (
         <div className="overlay-container">
