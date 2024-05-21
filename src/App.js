@@ -10,12 +10,12 @@ const Logout     = lazy ( () => import('./routers/home/logout'))
 
 function App() {
   return (
-  <Router basename="/app-test">
+  <Router >
     <Navbar />
     <Suspense fallback = {<div>Loading....</div>}>
       <Routes>
 
-        <Route path ="/Logout" element = {<Logout/>} />
+        <Route path ="/app-test" element = {<Logout/>} />
         <Route path = "/app-test" element = {<Home/>} />
         <Route path ="/cart"  element = {<CartPage/>} />
         <Route path ="/orderingInformation" element = {<OrderingInfoPage/>} />
