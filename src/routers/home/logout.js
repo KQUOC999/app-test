@@ -7,7 +7,7 @@ import Home from './page';
 
 
 const app = new Realm.App({ id: process.env.REACT_APP_REALM_ID });
-
+const user = app.currentUser;
 
 const schema = {
   title: 'Register',
@@ -30,7 +30,7 @@ const loginSchema = {
 };
 
 const Logout = () => {
-  const [ user , setUser] = useState(null);
+  const [ , setUser] = useState(null);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Thêm state mới để kiểm tra trạng thái đăng nhập
@@ -43,8 +43,7 @@ const Logout = () => {
           // Authenticate the user
           if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
-            setUser(null);
-            setIsLoggedIn(false);
+            window.location.reload(true)
           }
         } catch (error) {
           console.log(error.error);
@@ -55,7 +54,7 @@ const Logout = () => {
         fetchUser();
       }
       
-  }, [user]); // Thêm logOut vào danh sách dependency của useEffect
+  }, []); // Thêm logOut vào danh sách dependency của useEffect
 
   const register = async (form) => {
     const { email, password } = form.formData;
@@ -84,9 +83,9 @@ const Logout = () => {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {user ? (
         <>
-          {loading ? <p>Loading...</p> : <Home />}
+          {isLoggedIn && loading ? <p>Loading...</p> : <Home />}
         </>
       ) : (
         <div className="overlay-container">
