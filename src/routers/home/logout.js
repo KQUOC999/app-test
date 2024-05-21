@@ -45,7 +45,9 @@ const Logout = () => {
             setUser(null);
             setIsLoggedIn(false);
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
-            window.location.href = './logout'
+            setTimeout(() => {
+              window.location.href = '/logout'; // Navigate to logout page
+            }, 1000); // Delay of 1 second (1000 milliseconds)
           }
         } catch (error) {
           console.log(error.error);
