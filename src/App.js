@@ -10,7 +10,7 @@ const Logout     = lazy ( () => import('./routers/home/logout'))
 
 function App() {
   return (
-  <Router >
+  <Router basename="/app-test">
     <Navbar />
     <Suspense fallback = {<div>Loading....</div>}>
       <Routes>
