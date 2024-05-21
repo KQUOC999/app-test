@@ -45,13 +45,16 @@ const Logout = () => {
             setUser(null);
             setIsLoggedIn(false);
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
+            window.location.reload(true)
           }
         } catch (error) {
           console.log(error.error);
         }
     };
 
-    return fetchUser;
+    if (user) {
+        fetchUser();
+      }
       
   }, []); // Thêm logOut vào danh sách dependency của useEffect
 
@@ -82,9 +85,9 @@ const Logout = () => {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {user ? (
         <>
-          {loading ? <p>Loading...</p> : <Home />}
+          {isLoggedIn && loading ? <p>Loading...</p> : <Home />}
         </>
       ) : (
         <div className="overlay-container">
