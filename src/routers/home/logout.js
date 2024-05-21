@@ -73,8 +73,9 @@ const Logout = () => {
       const loggedInUser = await app.logIn(credentials);
       setLoading(false);
       setUser(loggedInUser);
-      window.location.href = '/app-test';
       setIsLoggedIn(true); // Đã đăng nhập thành công
+      window.location.href = '/app-test';
+    
     } catch (error) {
       console.log(error.error);
     }
