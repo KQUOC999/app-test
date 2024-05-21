@@ -42,9 +42,10 @@ const Logout = () => {
         try {
           // Authenticate the user
           if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
+            await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
             setUser(null);
             setIsLoggedIn(false);
-            await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
+            
             window.location.reload(true)
           }
         } catch (error) {
@@ -73,7 +74,7 @@ const Logout = () => {
     try {
       const credentials = Realm.Credentials.emailPassword(email, password);
       const loggedInUser = await app.logIn(credentials);
-      setLoading(false);
+      setLoading(true);
       setUser(loggedInUser);
       setIsLoggedIn(true); // Đã đăng nhập thành công
       window.location.href = '/app-test';
