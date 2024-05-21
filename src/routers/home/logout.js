@@ -75,7 +75,7 @@ const Logout = () => {
       setUser(loggedInUser);
       setIsLoggedIn(true); // Đã đăng nhập thành công
       window.location.reload(true);
-      window.location.href = '/app-test';
+      window.location.href = '/app-test/app-test';
     
     } catch (error) {
       console.log(error.error);
