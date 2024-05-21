@@ -12,6 +12,7 @@ function Navbar() {
     if (user) {
       try {
         await user.logOut();
+        window.location.reload(true);
       } catch (error) {
         console.error('Error logging out:', error);
       }
