@@ -42,8 +42,10 @@ const Logout = () => {
         try {
           // Authenticate the user
           if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
+            setUser(null);
+            setIsLoggedIn(false);
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
-            window.location.reload(true)
+            window.location.href = './logout'
           }
         } catch (error) {
           console.log(error.error);
