@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import * as Realm from 'realm-web';
 import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
@@ -35,6 +35,35 @@ const Logout = () => {
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Thêm state mới để kiểm tra trạng thái đăng nhập
 
+  const measureLoadTimeAndReload = () => {
+    const start = performance.now();
+    window.addEventListener( window.location.reload(true), () => {
+      const loadTime = performance.now() - start;
+      setTimeout(() => {
+        window.location.reload(true);
+      }, loadTime);
+    });
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+        try {
+          // Authenticate the user
+          if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
+            await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
+            setIsLoggedIn(false)
+            measureLoadTimeAndReload();
+          }
+        } catch (error) {
+          console.log(error.error);
+        }
+    };
+
+    if (user) {
+        fetchUser();
+      }
+      
+  }, []); // Thêm logOut vào danh sách dependency của useEffect
 
   const register = async (form) => {
     const { email, password } = form.formData;
