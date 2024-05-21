@@ -45,18 +45,13 @@ const Logout = () => {
             setUser(null);
             setIsLoggedIn(false);
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
-            setTimeout(() => {
-              window.location.href = '/logout'; // Navigate to logout page
-            }, 1000); // Delay of 1 second (1000 milliseconds)
           }
         } catch (error) {
           console.log(error.error);
         }
     };
 
-    if (user) {
-        fetchUser();
-      }
+    return fetchUser;
       
   }, []); // Thêm logOut vào danh sách dependency của useEffect
 
@@ -87,9 +82,9 @@ const Logout = () => {
 
   return (
     <div>
-      {user ? (
+      {isLoggedIn ? (
         <>
-          {isLoggedIn && loading ? <p>Loading...</p> : <Home />}
+          {loading ? <p>Loading...</p> : <Home />}
         </>
       ) : (
         <div className="overlay-container">
