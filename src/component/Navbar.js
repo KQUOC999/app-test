@@ -10,19 +10,19 @@ function Navbar() {
     <nav className="navbar">
       <ul className="navbar-list">
         <li className="navbar-item">
-          <Link className="navbar-link" to="/app-test/home">Home</Link>
+          <Link className="navbar-link" to="/app-test">Home</Link>
         </li>
         <li className="navbar-item">
-          <Link className="navbar-link" to="/app-test/cart">Cart</Link>
+          <Link className="navbar-link" to="/cart">Cart</Link>
         </li>
         <li className="navbar-item">
-          <Link className="navbar-link" to="/app-test/orderingInformation">OrderingInfor</Link>
+          <Link className="navbar-link" to="/orderingInformation">OrderingInfor</Link>
         </li>
         <li className="navbar-item">
-          <Link className="navbar-link" to="/app-test/MyForm">Form</Link>
+          <Link className="navbar-link" to="/MyForm">Form</Link>
         </li>
         <li className="navbar-item"> 
-          <Link className="navbar-link" to="/app-test/Logout">Logout</Link>
+          <Link className="navbar-link" to="/Logout">Logout</Link>
         </li>
       </ul>
 

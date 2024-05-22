@@ -44,7 +44,6 @@ const Logout = () => {
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
             setIsLoggedIn(false)
             window.location.reload(true)
-            window.location.href = '/app-test/Logout';
           }
         } catch (error) {
           console.log(error.error);
@@ -76,7 +75,7 @@ const Logout = () => {
       setUser(loggedInUser);
       setIsLoggedIn(true); // Đã đăng nhập thành công
       window.location.reload(true);
-      window.location.href = '/app-test/home';
+      window.location.href = '/app-test';
     
     } catch (error) {
       console.log(error.error);

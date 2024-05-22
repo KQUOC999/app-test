@@ -15,11 +15,11 @@ function App() {
     <Suspense fallback = {<div>Loading....</div>}>
       <Routes>
 
-        <Route path ="/app-test/Logout" element = {<Logout/>} />
-        <Route path = "/app-test/home" element = {<Home/>} />
-        <Route path ="/app-test/cart"  element = {<CartPage/>} />
-        <Route path ="/app-test/orderingInformation" element = {<OrderingInfoPage/>} />
-        <Route path ="/app-test/MyForm" element = {<MyForm/>} />
+        <Route path ="/Logout" element = {<Logout/>} />
+        <Route path = "/app-test" element = {<Home/>} />
+        <Route path ="/cart"  element = {<CartPage/>} />
+        <Route path ="/orderingInformation" element = {<OrderingInfoPage/>} />
+        <Route path ="/MyForm" element = {<MyForm/>} />
 
       </Routes>
     </Suspense>
