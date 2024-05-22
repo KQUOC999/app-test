@@ -56,6 +56,7 @@ const Logout = () => {
           }
         } catch (error) {
           console.log(error.error);
+          return  window.location.href = '/app-test/Logout';
         }
     };
 
