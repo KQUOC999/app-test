@@ -43,8 +43,16 @@ const Logout = () => {
           if (user) { // Kiểm tra xem user có tồn tại không trước khi gọi fetchUser
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
             setIsLoggedIn(false)
+          }
+          if (setUser() == null){
+            setIsLoggedIn(false)
             window.location.reload(true)
             window.location.href = '/app-test/Logout';
+            if (window.location.href === '/404')
+              {
+                setIsLoggedIn(false)
+                return  window.location.href = '/app-test/Logout';
+              }
           }
         } catch (error) {
           console.log(error.error);
@@ -76,7 +84,7 @@ const Logout = () => {
       setUser(loggedInUser);
       setIsLoggedIn(true); // Đã đăng nhập thành công
       window.location.reload(true);
-      window.location.href = '/app-test';
+      window.location.href = '/app-test/home';
     
     } catch (error) {
       console.log(error.error);
