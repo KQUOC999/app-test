@@ -44,6 +44,7 @@ const Logout = () => {
             await user.logOut(); // Trước khi đăng xuất, kiểm tra user có tồn tại
             setIsLoggedIn(false)
             window.location.reload(true)
+            return window.location.href = '/app-test'
           }
         } catch (error) {
           console.log(error.error);
