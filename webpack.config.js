@@ -3,13 +3,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const JavaScriptObfuscator = require('webpack-obfuscator');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
+        chunkFilename: '[name].[contenthash].js',
     },
     mode: 'production',
     module: {
@@ -33,20 +35,26 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html',  // Đảm bảo đường dẫn này đúng
+            template: './src/index.html',
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[contenthash].css',
         }),
         new JavaScriptObfuscator({
             rotateUnicodeArray: true,
-        }, []), // Không cần đặt tên tệp loại trừ nếu không cần thiết
+        }, []),
     ],
     optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin()],
+        minimizer: [
+            new TerserPlugin(),
+            new CssMinimizerPlugin(),
+        ],
+        splitChunks: {
+            chunks: 'all',
+        },
     },
     stats: {
         children: true,
