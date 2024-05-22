@@ -1,17 +1,17 @@
 const path = require('path');
-const JavaScriptObfuscator = require('webpack-obfuscator');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const JavaScriptObfuscator = require('webpack-obfuscator');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
     },
-    mode: 'production', // Đảm bảo rằng Webpack đang ở chế độ production
+    mode: 'production',
     module: {
         rules: [
             {
@@ -20,32 +20,35 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                    },
+                },
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
-            }
-        ]
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: 'index.html'
+            template: './src/index.html',  // Đảm bảo đường dẫn này đúng
+            filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[id].css'
+            chunkFilename: '[id].css',
         }),
         new JavaScriptObfuscator({
-            rotateUnicodeArray: true
-        }, ['excluded_bundle_name.js']) // Đặt tên tệp bạn không muốn obfuscate
+            rotateUnicodeArray: true,
+        }, []), // Không cần đặt tên tệp loại trừ nếu không cần thiết
     ],
     optimization: {
         minimize: true,
         minimizer: [new TerserPlugin()],
-    }
+    },
+    stats: {
+        children: true,
+    },
 };
